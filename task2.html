@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    /* Global Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #1A1D23; /* midnight blue background */
+      color: #fff; /* white text */
+    }
+    
+    .container {
+      max-width: 400px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #2F3640; /* dark blue background */
+      border: 1px solid #ddd; /* light gray border */
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      color: #fff; /* white text */
+    }
+    
+    /* Header Styles */
+    
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+      background-color: #4682B4; /* dark blue background */
+      color: #fff; /* white text */
+      padding: 10px;
+      border-radius: 10px 10px 0 0;
+    }
+    
+    .header h1 {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .header img {
+      width: 50px;
+    }
+    
+    /* Add Task Styles */
+    
+    .add-task {
+      margin-bottom: 20px;
+    }
+    
+    .add-task input[type="text"] {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc; /* light gray border */
+      border-radius: 5px;
+      color: #000; /* black text */
+    }
+    
+    .add-task button[type="button"] {
+      width: 100%;
+      height: 40px;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50; /* green background */
+      color: #fff; /* white text */
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    
+    .add-task button[type="button"]:hover {
+      background-color: #3e8e41; /* darker green background */
+    }
+    
+    /* Task List Styles */
+    
+    .task-list {
+      margin-bottom: 20px;
+      background-color: #1A1D23; /* midnight blue background */
+      padding: 10px;
+      border-radius: 10px;
+      color: #fff; /* white text */
+    }
+    
+    .task-list h2 {
+      color: #fff; /* white text */
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .task-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    
+    .task-list li {
+      padding: 10px;
+      border-bottom: 1px solid #ccc; /* light gray border */
+      color: #fff; /* white text */
+    }
+    
+    .task-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .task-list li:hover {
+      background-color: #F5F5F5; /* light gray background */
+      color: #fff; /* white text */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>To-Do List</h1>
+      <img src="cartoon-character.png" alt="Cartoon character">
+    </header>
+    <section class="add-task">
+      <input type="text" id="new-task" placeholder="What needs to be done?">
+      <button type="button" id="add-task">Add Task</button>
+    </section>
+    <section class="task-list">
+      <h2>Tasks</h2>
+      <ul id="task-list"></ul>
+    </section>
+  </div>
+
+  <script>
+    // JavaScript code
+    let taskList = [];
+
+    document.getElementById('add-task').addEventListener('click', function() {
+      let newTask = document.getElementById('new-task').value;
+      if (newTask !== '') {
+        taskList.push(newTask);
+        document.getElementById('new-task').value = '';
+        renderTaskList();
+      }
+    });
+
+    function renderTaskList() {
+      let taskListHTML = '';
+      for (let i = 0; i < taskList.length; i++) {
+        taskListHTML += `<li>${taskList[i]}</li>`;
+      }
+      document.getElementById('task-list').innerHTML = taskListHTML;
+    }
+
+    renderTaskList();
+  </script>
+</body>
+</html>
